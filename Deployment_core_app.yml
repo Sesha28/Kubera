@@ -6,7 +6,7 @@ spec:
   replicas: 4
   selector:
     matchLabels:
-      tier: core-mvc--server
+      tier: core-mvc-server
   template:
     metadata:
       labels:
