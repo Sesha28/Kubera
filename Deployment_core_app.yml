@@ -16,4 +16,4 @@ spec:
         - name: core-mvc--server-container
           image: sesha1936/the-core-app
            ports :
-            -containerPort:6666
+            -containerPort: 6666
