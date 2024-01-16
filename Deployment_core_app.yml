@@ -28,4 +28,22 @@ spec:
   - port: 8181
     targetPort: 6666
   selector:
-    app: core-mvc-server
+    tier: core-mvc-server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-web-service
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8181 # the cluster svc port 
+    targetPort: 6666 # the last port u have to reach, the port of the web application
+    nodePort: 30001 #port for the outside world
+  selector:
+    tier: core-mvc-server
+# Points to remember :
+# 1. Outside world, {in Laptop it is your windows based chrome browser} 
+#     1a. For the outside world to access our pod we just need a Node Port
+# 2. For Pod to Pod Communication we just need ClusterIP.
