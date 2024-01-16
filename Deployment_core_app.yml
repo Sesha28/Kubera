@@ -47,3 +47,4 @@ spec:
 # 1. Outside world, {in Laptop it is your windows based chrome browser} 
 #     1a. For the outside world to access our pod we just need a Node Port
 # 2. For Pod to Pod Communication we just need ClusterIP.
+# 3. http://localhost:30001/
