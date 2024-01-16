@@ -18,6 +18,7 @@ spec:
         ports :
         - containerPort: 6666
 ---
+# Below is the ClusterIP
 apiVersion: v1
 kind: Service
 metadata:
@@ -30,6 +31,7 @@ spec:
   selector:
     tier: core-mvc-server
 ---
+# Below is the NodePort
 apiVersion: v1
 kind: Service
 metadata:
