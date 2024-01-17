@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: the-contact-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      ramba: urvashi
+      tier: core-mvc-server
+  template:
+    metadata:
+      labels:
+        ramba: urvashi
+        tier: core-mvc-server
+    spec:
+      containers:
+      - name: the-micro-svc-container
+        image: sesha1936/the-contact-app
+        ports :
+        - containerPort: 8989
+---
+# Below is the ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  name: the-contact-app-cip
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8383
+    targetPort: 8989
+  selector:
+    ramba: urvashi
+---
+# Below is the NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: the-contact-app-np
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    #port: 8383 # the cluster svc port
+    port: 8989 # the cluster svc port
+    targetPort: 8989 # the last port u have to reach, the port of the web application
+    nodePort: 31002 #port for the outside world
+  selector:
+    ramba: urvashi
