@@ -22,7 +22,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: core-web-service
+  name: core-web-service-cip
 spec:
   type: ClusterIP
   ports:
@@ -35,18 +35,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: core-web-service
+  name: core-web-service-np
 spec:
   type: NodePort
   ports:
   - protocol: TCP
     port: 8181 # the cluster svc port 
     targetPort: 6666 # the last port u have to reach, the port of the web application
-    nodePort: 30001 #port for the outside world
+    nodePort: 31001 #port for the outside world
   selector:
     tier: core-mvc-server
 # Points to remember :
 # 1. Outside world, {in Laptop it is your windows based chrome browser} 
 #     1a. For the outside world to access our pod we just need a Node Port
 # 2. For Pod to Pod Communication we just need ClusterIP.
-# 3. http://localhost:30001/
+# 3. Browse http://localhost:30001/
+# 4. GitHub pull https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_core_app.yml
