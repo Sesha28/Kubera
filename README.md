@@ -5,3 +5,7 @@ The ClusterIP {core-web-service-cip} in the first YML "Deployment_core_app.yml" 
 However there is another ClusterIP {the-contact-app-cip} present in the second YML "Deployment_inter_pod.yml" that adds another network to the deployment {the-contact-app} and further exposes the deployment {the-contact-app} to the outside world via the nodePort configuration present in the second YML "Deployment_core_app.yml"
 
 In a pure linux cluster it will be interesting to see if you need the nodeports at all  as nodeports are only needed to give access to the outside world
+
+the git pull url : https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_core_app.yml
+
+The git pull url : https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_inter_pod.yml
