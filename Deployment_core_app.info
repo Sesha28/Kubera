@@ -13,3 +13,6 @@ kubectl get all
 kubectl delete deployment core-mvc-server
 
 kubectl delete svc core-web-service
+
+the git pull url is https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_core_app.yml
+
