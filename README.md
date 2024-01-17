@@ -1,19 +1,7 @@
-Here we do deploy 4 instances of a ASP.NET 7 mvc app. 
-For Docker Desktop we just need NodePort. Cluster IP is provided as a sample. 
-Looking at the NodePort snippet at the bottom, we have to browse this url  http://localhost:31001 in Chrome.
-The pull url for this yml is https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_core_app.yml
+This is example of one deployment that is a mvc app {core-mvc-server}, and another deployment that is also an mvc app {the-contact-app} but has an endpoint http://localhost:31002/FirstContact?txt=Ravathi, such that when your brose this end point inside the mvc method {the-contact-app} inturn issues a http request to the ClusterIP {core-web-service-cip} to get data from the first mvc app and display as a response to the browsed url  http://localhost:31002/FirstContact?txt=Ravathi.
 
-commands to execute this 
-pull yml from github by simply borwsing and copy pasting the content into a new file called Deployment_core_app.yml
+The ClusterIP {core-web-service-cip} in the first YML "Deployment_core_app.yml" also bring the second deployment {the-contact-app} in one network.
 
-kubectl apply -f Deployment_core_app.yml
+However there is another ClusterIP {the-contact-app-cip} present in the second YML "Deployment_inter_pod.yml" that adds another network to the deployment {the-contact-app} and further exposes the deployment {the-contact-app} to the outside world via the nodePort configuration present in the second YML "Deployment_core_app.yml"
 
-browse from your windows machine http://localhost:31001
-
-kubectl display pods -o wide
-
-kubectl get all
-
-kubectl delete deployment core-mvc-server
-
-kubectl delete svc core-web-service
+In a pure linux cluster it will be interesting to see if you need the nodeports at all  as nodeports are only needed to give access to the outside world
