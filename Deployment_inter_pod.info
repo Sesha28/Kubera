@@ -1,0 +1,15 @@
+Here we do deploy 1 instances of a ASP.NET 7 mvc app. 
+
+kubectl apply -f Deployment_inter_pod.yml
+
+browse from your windows machine http://localhost:31002/show
+
+http://localhost:31002/FirstContact?txt=Ravathi
+
+kubectl display pods -o wide
+
+kubectl get all
+
+kubectl delete deployment core-mvc-server
+
+kubectl delete svc core-web-service
