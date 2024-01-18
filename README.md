@@ -21,6 +21,7 @@ If you are only interested in a docker environment to test pod to pod communicat
 3. Then You Browse
   1. http://localhost:4848/Show
   2. http://localhost:4848/FirstContact?txt=Urvashi
+     
 **//////////////////////////////////////// Docker only deployment//////////////////////////////////////// **
 
 The git pull url : https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_core_app.yml
