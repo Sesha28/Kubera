@@ -7,6 +7,7 @@ However there is another ClusterIP {the-contact-app-cip} present in the second Y
 In a pure linux cluster it will be interesting to see if you need the nodeports at all  as nodeports are only needed to give access to the outside world
 
 **//////////////////////////////////////// Docker only deployment//////////////////////////////////////// **
+
 If you are only interested in a docker environment to test pod to pod communication :
 
 1. docker run --name the-core-app-container -d -p 4747:6666 sesha1936/the-core-app
