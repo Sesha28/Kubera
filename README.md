@@ -6,7 +6,7 @@ However there is another ClusterIP {the-contact-app-cip} present in the second Y
 
 In a pure linux cluster it will be interesting to see if you need the nodeports at all  as nodeports are only needed to give access to the outside world
 
-//////////////////////////////////////// Docker only deployment//////////////////////////////////////// 
+**//////////////////////////////////////// Docker only deployment//////////////////////////////////////// **
 If you are only interested in a docker environment to test pod to pod communication :
 
 1. docker run --name the-core-app-container -d -p 4747:6666 sesha1936/the-core-app
@@ -20,7 +20,7 @@ If you are only interested in a docker environment to test pod to pod communicat
 3. Then You Browse
   1. http://localhost:4848/Show
   2. http://localhost:4848/FirstContact?txt=Urvashi
-//////////////////////////////////////// Docker only deployment//////////////////////////////////////// 
+**//////////////////////////////////////// Docker only deployment//////////////////////////////////////// **
 The git pull url : https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_core_app.yml
 
 The git pull url : https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_inter_pod.yml
