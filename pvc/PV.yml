@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: test-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: standard
+  hostPath:
+    #path: "/mnt/data" # this if for Linux 
+    #path: "C:/docker_volume/pv" # this will never work
+    path: /run/desktop/mnt/host/c/docker_volume/pv # this is how you do for docker desktop

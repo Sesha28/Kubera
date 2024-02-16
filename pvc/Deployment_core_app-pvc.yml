@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: core-mvc-pvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: core-mvc-pvc
+  template:
+    metadata:
+      labels:
+        tier: core-mvc-pvc
+    spec:
+      containers:
+      - name: core-mvc-with-pvc-container
+        image: the-core-app
+        imagePullPolicy: IfNotPresent # if image needs to pulled from local machine
+        volumeMounts:
+        - name: my-volume
+          mountPath: /app
+        ports :
+          - containerPort: 6666
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: my-pvc
+        
+---
+# Below is the ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-web-service-pvc-cip
+spec:
+  type: ClusterIP
+  ports:
+  - port: 8686
+    targetPort: 6666
+  selector:
+    tier: core-mvc-pvc
+---
+# Below is the NodePort
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-web-service-pvc-np
+spec:
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 8686 # the cluster svc port 
+    targetPort: 6666 # the last port u have to reach, the port of the web application
+    nodePort: 31003 #port for the outside world
+  selector:
+    tier: core-mvc-pvc
+# Points to remember :
+# 1. Outside world, {in Laptop it is your windows based chrome browser} 
+#     1a. For the outside world to access our pod we just need a Node Port
+# 2. For Pod to Pod Communication we just need ClusterIP.
+# 3. Browse http://localhost:31003/
+# 4. GitHub pull https://raw.githubusercontent.com/Sesha28/Kubera/main/Deployment_core_app.yml
