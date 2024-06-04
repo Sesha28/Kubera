@@ -6,7 +6,7 @@ kubectl apply -f Deployment_core_app.yml
 
 browse from your windows machine http://localhost:31001
 
-kubectl display pods -o wide
+kubectl get pods -o wide
 
 kubectl get all
 
